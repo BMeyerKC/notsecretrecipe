@@ -1,16 +1,68 @@
 ﻿<!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="author" content="WebCrafters">
+    <meta name="description" content="A place for recipes">
+    <meta name="keywords" content="family food recipes secrets fun">
+    <meta name="language" content="english">
+    <link rel="icon" type="image/ico" href="~/Content/images/favicon.ico">
+    <!--[if IE 6]><link type="text/css" rel="stylesheet" href="~/Views/Home/css/ie6.css" /><![endif]-->
+    <style id="bitmark_stylesheet" type="text/css"></style>
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @RenderBody()
+    <div id="header">
+        <a href="index.html">
+            <img class="logo png" src="images/logo.png" title="Go to homepage" width="201" height="60" alt="Bon Apetit logo"></a>
+        <div class="main_menu">
+            <div class="left"></div>
+            <div class="middle">
+                <ul>
+                    <li class="selected">Home</li>
+                    <li><a href="recipes.html" title="Recipes">Recipes</a></li>
+                    <li><a href="menu.html" title="Menu">Menu</a></li>
+                    <li><a href="about-us.html" title="About us">About us</a></li>
+                    <li><a href="contact-us.html" title="Contact us">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="right"></div>
+        </div>
+        <!-- .main_menu -->
+        <div class="clear_container"></div>
+        <!-- .clear_container -->
+    </div>
+    <!-- #header -->
+
+    <div id="content">
+        <div class="top"></div>
+        @RenderBody()
+        <div class="bottom">
+            <a class="ribon" href="contact-us.html"></a>
+            <div class="email_phone">
+                <a href="mailto:contact@bonapetit.com">contact@bonapetit.com</a>
+                <div class="phone">800.930.7622&nbsp;&nbsp;|&nbsp;&nbsp;838.394.8169</div>
+                <div class="clear_container"></div>
+                <!-- .clear_container -->
+            </div>
+        </div>
+        <!-- #content .bottom -->
+
+    </div>
+    <!-- #content -->
+
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
+
+    <div id="footer">
+        <p>Copyright © 1996-2008. Bon Apetit. All rights reserved. Bon Apetit® is a registered trademark.</p>
+    </div>
+    <!-- #footer -->
+
 </body>
 </html>

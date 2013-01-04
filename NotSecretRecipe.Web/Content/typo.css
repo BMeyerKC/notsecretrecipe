@@ -1,0 +1,162 @@
+﻿
+.main_menu ul li, #left ul, h1, .more_info, h3, .email_phone, label, .mandatory_fields, h4 a, .recipe_category p, h2, .name_of_the_recipe, .all_time_fav li a, .price{
+ font-family: Georgia, "Times New Roman", Times, serif;
+ }
+ 
+#footer, p, input, textarea, .ingredients ul li{
+ font-family: Arial, Helvetica, sans-serif;
+ }
+ 
+#footer p{
+ font-size: 11px;
+ } 
+ 
+#left ul, p, .mandatory_fields, .recipe_category p{
+ font-size: 13px;
+ } 
+ 
+.main_menu ul li, .more_info, label, .submit, h4, h4 a, .name_of_the_recipe, .all_time_fav li a, .price{
+ font-size: 15px;
+ }
+ 
+#left ul li h2, .email_phone,  input, textarea, h2{
+ font-size: 16px;
+ }
+ 
+.ingredients ul li{
+ padding: 2px 0 0 0;
+ }
+ 
+.ingredients ul{
+ font-size: 13px;
+ } 
+ 
+h1{  
+ font-size: 25px;
+ } 
+ 
+h3{  
+ font-size: 22px;
+ } 
+ 
+a, .main_menu ul li a, #left ul li a, h3 a:hover{
+ text-decoration: none;
+ }
+ 
+#left ul li a:hover, .more_info a:hover, .email_phone a:hover, h4 a:hover, .name_of_the_recipe:hover, .all_time_fav li a:hover, h3 a{
+ text-decoration: underline;
+ }
+ 
+.email_phone, .email_phone a{
+ color: #a27b71;
+ }
+
+.main_menu ul li.selected{
+ color: #ffebc8;
+ }
+
+#footer p{
+ color: #ab7466;
+ }
+
+#left ul li h2, h2{
+ color: #442e2a;
+ }
+ 
+h1, h3, h3 a{
+ color: #89240b;
+ }
+ 
+#left ul li a, .more_info, .more_info a, input, textarea, h4, h4 a, .name_of_the_recipe, .all_time_fav li a, .price{
+ color: #d88d08;
+ }
+ 
+.main_menu ul li a{
+ color: #ffffff;
+ }
+ 
+p, label, .recipe_category p{
+ color: #5c4c48;
+ }
+ 
+.ingredients p, .ingredients ul li{
+ color: #225690;
+ }
+ 
+p, label, .ingredients ul li{
+ line-height: 18px;
+ }
+ 
+.recipe_category p{
+ line-height: 14px;
+ }
+ 
+label span, .mandatory_fields{
+ color: #df4008;
+ }
+ 
+ .main_menu ul li{
+ text-shadow:0 1px 0 #000000;
+ }
+ 
+ #footer{
+ text-align:center;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

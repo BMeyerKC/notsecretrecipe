@@ -1,0 +1,432 @@
+﻿.buy_from_tf{
+ width:115px;
+ height: 115px;
+ position: absolute;
+ right:0;
+ border: none;
+ }
+ 
+.buy_from_tf a, .buy_from_tf img{
+ border: none;
+ }
+
+html{
+ background: url('images/background_texture.jpg') repeat;
+ }
+ 
+body{
+ background: url(images/black_highlight.png) repeat-x;
+ }
+ 
+.clear_container{
+ clear: both;
+ }
+ 
+.sep_left{
+ height: 1px;
+ line-height: 0px;
+ width: 100%;
+ background: #d8d8d8;
+ margin: 22px 0 18px 0;
+ }
+ 
+#header{
+ height: 116px;
+ width: 935px;
+ margin: 0 auto;
+ }
+ 
+.logo{
+ margin: 35px 0 0 26px;
+ float: left;
+ }
+ 
+ /* Main menu */
+ 
+.main_menu{
+ float: right;
+ margin: 48px 0 0 0;
+ }
+ 
+.main_menu ul{
+ margin: 8px 0 0 0;
+ }
+ 
+.main_menu ul li{
+ display: inline;
+ margin: 0 6px 0 15px;
+ }
+
+.main_menu .left{
+ width: 11px;
+ height: 36px;
+ background: url(images/main_menu_bg_left.png) no-repeat;
+ float: left;
+ }
+ 
+.main_menu .middle{
+ height: 36px;
+ background: url(images/main_menu_bg_middle.png) repeat-x;
+ float: left;
+ padding: 0 7px 0 0;
+ }
+ 
+.main_menu .right{
+ width: 11px;
+ height: 36px;
+ background: url(images/main_menu_bg_right.png) no-repeat;
+ float: left;
+ }
+ 
+/* Main menu */
+
+/* Content */
+
+#content{
+ width: 935px;
+ margin: 0 auto;
+ }
+
+#content .top{
+ width: 935px;
+ height: 33px;
+ background: url(images/content_top.png) no-repeat;
+ }
+ 
+#content .middle{
+ width: 935px;
+ background: url(images/content_middle.png) repeat-y;
+ position: relative;
+ }
+ 
+#content .bottom, #content .bottom2{
+ width: 935px;
+ height: 76px;
+ position: relative;
+ }
+ 
+#content .bottom{
+ background: url(images/content_bottom.png) no-repeat;
+ }
+ 
+#content .bottom2{
+ background: url(images/content_bottom2.png) no-repeat;
+ }
+
+/* Content */
+
+/* Content left side */
+
+#left{
+ width: 177px;
+ margin: 0 0 0 27px;
+ padding: 0 0 50px 0;
+ float: left;
+ }
+ 
+#left ul li{
+ margin: 6px 0 0 0;
+ }
+
+/* Content left side */
+
+/* Menu binding */ 
+ 
+.menu_binding{
+ position:absolute;
+ top: 109px;
+ left: 207px;
+ background: url(images/menu_binding.png) no-repeat;
+ width: 57px;
+ height: 273px;
+ }
+
+/* Menu binding */ 
+
+/* Content right side */
+
+#right{
+ width: 645px;
+ margin: 20px 0 0 54px;
+ float: left;
+ }
+ 
+h1{
+ margin: 0 0 30px 0;
+ }
+ 
+h3{
+ padding: 25px 0 8px 0;
+ }
+ 
+h1.search{
+ margin: 0;
+ }
+ 
+.first{
+ width: 363px;
+ position: relative;
+ z-index: 2;
+ }
+ 
+.second{
+ width: 440px;
+ }
+ 
+.wrapper{
+ padding: 0 0 0 23px;
+ }
+ 
+.section_img{
+ position: absolute;
+ top: 53px;
+ right: 9px;
+ z-index: 1;
+ }
+ 
+.with_bg{
+ background: url(images/right_p_bg.jpg) repeat-y #f3f3f3;
+ width: 639px;
+ margin: 42px 0 0 0;
+ padding: 0 0 14px 23px;
+ }
+ 
+.with_bg .left, .with_bg .right{
+ width: 270px;
+ float: left;
+ }
+ 
+.with_bg .right{
+ margin: 0 0 0 50px;
+ }
+
+/* Content right side */
+
+/* Footer */
+ 
+#footer{
+ width: 935px;
+ height: 62px;
+ margin: 0 auto;
+ }
+  
+#footer p{
+ padding: 24px 0 0 0;
+ }
+  
+.ribon{
+ position: absolute;
+ top: -18px;
+ left: 51px;
+ width: 177px;
+ height: 80px;
+ background: url(images/ribon.png) no-repeat;
+ }
+ 
+.email_phone{
+ width: 576px;
+ height: 37px;
+ padding: 40px 0 0 282px;
+ }
+ 
+.email_phone a{
+ display: block;
+ height: 22px;
+ width: 196px;
+ background: url(images/email_icon.png) no-repeat;
+ padding: 1px 0 0 33px;
+ float:left;
+ }
+ 
+.phone{
+ height: 22px;
+ background: url(images/phone_icon.png) no-repeat;
+ padding: 1px 0 0 33px;
+ float:left;
+ }
+/* Footer */ 
+
+/* Form items: inputs, textarea, etc */
+
+input{
+ width: 212px;
+ height: 21px;
+ border: none;
+ background: none;
+ }
+ 
+textarea, input{
+ border: 2px solid #dedede;
+ background: none;
+ margin: 8px 0 10px 0;
+ padding: 3px 10px 3px 10px;
+ } 
+ 
+.submit{
+ width: 70px;
+ border: none;
+ background: none;
+ margin: 10px 0 0 0;
+ padding: 0;
+ position: relative;
+ left: -10px;
+ }
+
+/* Form items: inputs, textarea, etc */
+
+.recipes_categories{
+ padding: 50px 0 0 0;
+ }
+ 
+.pictures_of_the_recipes{
+ margin: 12px 0 0 0;
+ }
+ 
+.recipes_categories_small{
+ padding: 19px 0 0 0; 
+ }
+
+.recipe_category{
+ width: 105px;
+ float: left;
+ margin: 0 15px 0 0;
+ }
+ 
+.lightbox_pix{
+ margin: 9px 0 0 0; 
+ }
+ 
+.recipe_category_small{
+ width: 80px;
+ float: left;
+ margin: 0 8px 0 0;
+ }
+ 
+.recipe_category p{
+ margin: 0 0 0 5px;
+ }
+ 
+.another_row{
+ padding: 27px 0 0 0;
+ }
+ 
+.another_row_small{
+ padding: 8px 0 0 0;
+ }
+ 
+.recipe_cat_img{
+ width: 96px;
+ height: 72px;
+ background: url(images/recipes_category_bg.png) no-repeat;
+ padding: 6px 0 0 6px;
+ }
+ 
+.recipe_cat_img:hover{
+ background-position: bottom;
+ }
+
+.recipe_cat_img_small{
+ width: 75px;
+ height: 59px;
+ background: url(images/recipes_category_bg_small.png) no-repeat;
+ padding: 5px 0 0 5px;
+ }
+ 
+.recipe_cat_img_small:hover{
+ background-position: bottom;
+ }
+ 
+.recipe_category_small .selected{
+ background-position: bottom;
+ }
+ 
+h4{
+ margin: 7px 0 0 5px;
+ }
+
+.recipe{
+ width: 362px;
+ position: relative;
+ }
+
+.recipe_bg{
+ width: 100%;
+ height: 2px;
+ background: url(images/menu_recipe_bg.jpg) repeat-x;
+ position: absolute;
+ bottom: 3px;
+ z-index: 1;
+ }
+ 
+.name_of_the_recipe{
+ float: left;
+ background: #fff;
+ z-index: 2;
+ position: relative;
+ padding: 0 8px 0 0;
+ }
+ 
+.difficulty{
+ width: 57px;
+ height: 16px;
+ position: absolute;
+ z-index: 3;
+ right: 0;
+ top:4px;
+ }
+ 
+.price{
+ width: 40px;
+ position: absolute;
+ z-index: 4;
+ right: 0;
+ top:2px;
+ padding: 0 0 0 6px;
+ background: #fff;
+ }
+ 
+.all_time_fav{
+ padding: 1px 0 0 0;
+ }
+ 
+.all_time_fav li{
+ float: left;
+ width: 213px;
+ padding: 8px 0 0 0;
+ }
+ 
+.recipe_left{
+ width: 367px;
+ float: left;
+ }
+ 
+/* Ingredients */
+
+.ingredients{ 
+ width: 221px;
+ float: left;
+ margin: 0 0 0 15px;
+ }
+
+.note_top{
+ width: 141px;
+ height: 63px;
+ background: url(images/ingredients_top.jpg) no-repeat;
+ padding: 0 40px 0 40px;
+ }
+ 
+.note_middle{
+ width: 141px;
+ background: url(images/ingredients_middle.jpg) repeat-y;
+ padding: 0 40px 0 40px;
+ }
+ 
+.note_bottom{
+ width: 221px;
+ height: 46px;
+ background: url(images/ingredients_bottom.jpg) no-repeat;
+ }
+
+
+/* Ingredients */
+.error {border:2px solid red!important; }   
