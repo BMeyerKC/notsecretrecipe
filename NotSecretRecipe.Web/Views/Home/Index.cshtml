@@ -31,13 +31,38 @@
             <li><a href="recipes-detail.html">Guest Chef SpeedScratch</a></li>
         </ul>
         <div class="sep_left"></div>
-        <ul>
-            <li>
-                <h2>Categories</h2>
-            </li>
-            <li><a href="#">Desert</a></li>
-            <li><a href="#">Breakfast</a></li>
-            <li><a href="#">Cooking Instructions</a></li>
+        @section scripts{
+            <script type="text/javascript">
+                $.post("/service/categories", function (data) {
+                    var template = $("#categoryTemplate").html();
+                    var html = Handlebars.compile(template)(data);
+                    $(html).appendTo("#categoryList");
+                });
+                $.post("/service/welcomemessage", function (data) {
+                    var template = $("#welcomeTemplate").html();
+                    var html = Handlebars.compile(template)(data);
+                    $(html).appendTo("#welcomeMessage");
+                });
+            </script>
+            <script id="categoryTemplate" type="text/html">
+                <li>
+                    <h2>Recipe Categories</h2>
+                </li>
+                {{#this}}
+                <li>
+                    <a href="#">{{Name}}</a>
+                </li>
+                {{/this}}
+            </script>
+            <script id="welcomeTemplate" type="text/html">
+                <h1>{{Title}}</h1>
+                <img class="section_img" style="max-height: 200px" src="{{ImageUrl}}" alt="Homepage">
+                <p class="first">
+                    {{Content}}
+                </p>
+            </script>
+        }
+        <ul id="categoryList">
         </ul>
         <div class="sep_left"></div>
         <ul>
@@ -51,16 +76,7 @@
     </div>
     <!-- #left -->
     <div id="right">
-        <div class="wrapper">
-            <h1>Welcome to our cosy restaurant</h1>
-            <img class="section_img" src="images/index_img.jpg" alt="Homepage">
-            <p class="first">
-                Ten years ago a crack commando unit was sent to prison by a military court for a crime they didn't commit. These men promptly escaped.<br>
-                <br>
-                From a maximum security stockade to the Los Angeles underground. Today, still wanted by the government, they survive as soldiers of fortune. If you have a problem and no one else can help, and if you can find them, maybe you can hire the A-team. Hong Kong Phooey, number one super guy. Hong Kong Phooey, quicker than the human eye.
-            </p>
-            <br>
-            <p class="more_info"><a href="#">Find out more</a></p>
+        <div class="wrapper" id="welcomeMessage">
         </div>
         <div class="with_bg">
             <h3>Learn to make art. With food!</h3>
