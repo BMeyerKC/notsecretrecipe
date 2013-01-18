@@ -58,12 +58,67 @@
 
 
     @Scripts.Render("~/bundles/jquery")
+
+    <script type="text/javascript">
+        function LoadRandomRecipes(elementSelector) {
+            $.post("/service/recipes", function (data) {
+                var template = $("#randomRecipeTemplate").html();
+                var html = Handlebars.compile(template)(data);
+                $(html).appendTo($(elementSelector));
+            });
+        }
+
+
+        function LoadCategories(elementSelector) {
+            $.post("/service/categories", function (data) {
+                var template = $("#categoryTemplate").html();
+                var html = Handlebars.compile(template)(data);
+                $(html).appendTo($(elementSelector));
+            });
+        }
+
+        function LoadWelcome(elementSelector) {
+            $.post("/service/welcomemessage", function (data) {
+                var template = $("#welcomeTemplate").html();
+                var html = Handlebars.compile(template)(data);
+                $(html).appendTo($(elementSelector));
+            });
+        }
+    </script>
+
     @RenderSection("scripts", required: false)
 
     <div id="footer">
         <p>Copyright © 1996-2008. Bon Apetit. All rights reserved. Bon Apetit® is a registered trademark.</p>
     </div>
     <!-- #footer -->
+    <script id="categoryTemplate" type="text/html">
+        <li>
+            <h2>Recipe Categories</h2>
+        </li>
+        {{#this}}
+                <li>
+                    <a href="#">{{Name}}</a>
+                </li>
+        {{/this}}
+    </script>
+    <script id="welcomeTemplate" type="text/html">
+        <h1>{{Title}}</h1>
+        <img class="section_img" style="max-height: 200px" src="{{ImageUrl}}" alt="Homepage">
+        <p class="first">
+            {{Content}}
+        </p>
+    </script>
+    <script id="randomRecipeTemplate" type="text/html">
+        <li>
+            <h2>Learn how to cook</h2>
+        </li>
+        {{#this}}
+                <li>
+                    <a href="/Recipe/Index/{{Id}}">{{Name}}</a>
+                </li>
+        {{/this}}
+    </script>
 
 </body>
 </html>

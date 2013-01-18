@@ -1,6 +1,7 @@
-﻿@model dynamic
+﻿@model NotSecretRecipe.Web.Controllers.RecipeController.RecipeVM
 
 @{
+    ViewBag.Title = Model.recipe.Name;
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
@@ -54,4 +55,5 @@
     <!-- .clear_container -->
 </div>
 <!-- #content .middle -->
+
 

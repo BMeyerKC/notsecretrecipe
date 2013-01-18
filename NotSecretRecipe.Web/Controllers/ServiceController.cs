@@ -35,6 +35,16 @@ namespace NotSecretRecipe.Web.Controllers
 
             return Json(webContent);
         }
+
+        public JsonResult Recipes()
+        {
+            List<Recipe> recipes;
+            using (var raven = MvcApplication.Store.OpenSession())
+            {
+                recipes = raven.Query<Recipe>().ToList();
+            }
+            return Json(recipes);
+        }
     }
 
 }
