@@ -45,6 +45,30 @@ namespace NotSecretRecipe.Web.Controllers
             }
             return Json(recipes);
         }
+
+        public JsonResult Recipe(int id)
+        {
+            Recipe recipe;
+            using (var raven = MvcApplication.Store.OpenSession())
+            {
+                recipe = raven.Load<Recipe>(string.Format("recipes/{0}", id));
+            }
+            return Json(recipe);
+        }
+
+        public JsonResult RecipeNew()
+        {
+            var recipe = new Recipe
+                {
+                    Directions = new List<Direction>
+                        {
+                            new Direction {Step = 0, Description = "desc1"},
+                            new Direction {Step = 1, Description = "desc2"}
+                        }
+                };
+
+            return Json(recipe);
+        }
     }
 
 }

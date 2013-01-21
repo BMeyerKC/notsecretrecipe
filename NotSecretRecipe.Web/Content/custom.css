@@ -9,3 +9,8 @@ is easier to update the theme. Simply copy an existing
 style from style.css to this file, and modify it to 
 your liking.
 */
+
+.ingredient {
+    font-family: 'Sue Ellen Francisco', cursive;
+    font-style: italic;
+}

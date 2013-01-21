@@ -18,8 +18,8 @@
 </head>
 <body>
     <div id="header">
-        <a href="index.html">
-            <img class="logo png" src="images/logo.png" title="Go to homepage" width="201" height="60" alt="Bon Apetit logo"></a>
+        <a href="/">
+            <img class="logo png" src="/Content/images/not-secret.png" title="Go to homepage" width="200" height="60" alt="Not Secret Recipe"></a>
         <div class="main_menu">
             <div class="left"></div>
             <div class="middle">
@@ -43,10 +43,9 @@
         <div class="top"></div>
         @RenderBody()
         <div class="bottom">
-            <a class="ribon" href="contact-us.html"></a>
+            <a class="ribon" href="#"></a>
             <div class="email_phone">
-                <a href="mailto:contact@bonapetit.com">contact@bonapetit.com</a>
-                <div class="phone">800.930.7622&nbsp;&nbsp;|&nbsp;&nbsp;838.394.8169</div>
+                <a href="mailto:info@notsecretrecipe.com">info@notsecretrecipe.com</a>
                 <div class="clear_container"></div>
                 <!-- .clear_container -->
             </div>
@@ -55,25 +54,46 @@
 
     </div>
     <!-- #content -->
+    <div id="footer">
+        <p>Copyright © 2012. Not Secret Recipe. All rights reserved.</p>
+    </div>
+    <!-- #footer -->
 
 
     @Scripts.Render("~/bundles/jquery")
 
     <script type="text/javascript">
+        var editorDirectionStep = 0;
+
         function LoadRandomRecipes(elementSelector) {
             $.post("/service/recipes", function (data) {
                 var template = $("#randomRecipeTemplate").html();
                 var html = Handlebars.compile(template)(data);
-                $(html).appendTo($(elementSelector));
+                $(elementSelector).html(html);
+            });
+        }
+        function LoadRecipe(elementSelector, id) {
+            $.post("/service/recipe/" + id, function (data) {
+                var template = $("#recipeTemplate").html();
+                var html = Handlebars.compile(template)(data);
+                $(elementSelector).html(html);
             });
         }
 
+        function NewRecipe(elementSelector) {
+            $.post("/service/recipeNew/", function (data) {
+                var template = $("#recipeEditTemplate").html();
+                var html = Handlebars.compile(template)(data);
+                editorDirectionStep = data.Directions.length;
+                $(elementSelector).html(html);
+            });
+        }
 
         function LoadCategories(elementSelector) {
             $.post("/service/categories", function (data) {
                 var template = $("#categoryTemplate").html();
                 var html = Handlebars.compile(template)(data);
-                $(html).appendTo($(elementSelector));
+                $(elementSelector).html(html);
             });
         }
 
@@ -81,27 +101,45 @@
             $.post("/service/welcomemessage", function (data) {
                 var template = $("#welcomeTemplate").html();
                 var html = Handlebars.compile(template)(data);
-                $(html).appendTo($(elementSelector));
+                $(elementSelector).html(html);
             });
         }
+
+        $(document).on("click", "#NewRecipeSubmitButton", function () {
+            var postData = $("#NewRecipeForm").serialize();
+            console.log(postData);
+            $.post("Admin/NewRecipe", postData, function (data) {
+                if (data == "1") {
+                    LoadRecipe(".wrapper", "1");
+                }
+            });
+        });
+
+        $(document).on("click", "#RecipeAddDirectionButton", RecipeDirectionAdd);
+
+        function RecipeDirectionAdd() {
+
+            var template = $("#NewRecipeDirectionTemplate").html();
+            var html = Handlebars.compile(template)(editorDirectionStep);
+            $("#RecipeAddDirectionButton").before(html);
+            editorDirectionStep++;
+        }
+
     </script>
 
     @RenderSection("scripts", required: false)
 
-    <div id="footer">
-        <p>Copyright © 1996-2008. Bon Apetit. All rights reserved. Bon Apetit® is a registered trademark.</p>
-    </div>
-    <!-- #footer -->
     <script id="categoryTemplate" type="text/html">
         <li>
             <h2>Recipe Categories</h2>
         </li>
         {{#this}}
-                <li>
-                    <a href="#">{{Name}}</a>
-                </li>
+        <li>
+            <a href="#">{{Name}}</a>
+        </li>
         {{/this}}
     </script>
+
     <script id="welcomeTemplate" type="text/html">
         <h1>{{Title}}</h1>
         <img class="section_img" style="max-height: 200px" src="{{ImageUrl}}" alt="Homepage">
@@ -109,15 +147,91 @@
             {{Content}}
         </p>
     </script>
+
+    <script id="recipeTemplate" type="text/html">
+        <div class="recipe_left">
+            <h1>{{Name}}</h1>
+            {{#if Preparations}}
+            <h4>Preparations</h4>
+            {{#each Preparations}}
+            <p>{{Description}}</p>
+            <br />
+            {{/each}}
+            {{/if}}
+            <h4>Directions</h4>
+            {{#each Directions}}
+            <p>
+                <strong>Step {{Step}}:</strong>
+                <br />
+                {{Description}}
+            </p>
+            <br />
+            {{/each}}
+            <p>Enjoy!</p>
+        </div>
+        <div class="ingredients">
+            <div class="note_top"></div>
+            <div class="note_middle">
+                <ul id="ingredient_list" style="font-size: 25px;">
+                    {{#each Ingredients}}
+                    <li><span class="ingredient">{{Name}}</span></li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="note_bottom"></div>
+        </div>
+        <div class="clear_container"></div>
+    </script>
+
     <script id="randomRecipeTemplate" type="text/html">
-        <li>
-            <h2>Learn how to cook</h2>
-        </li>
-        {{#this}}
-                <li>
-                    <a href="/Recipe/Index/{{Id}}">{{Name}}</a>
-                </li>
-        {{/this}}
+        <ul>
+            <li>
+                <h2>Learn how to cook</h2>
+            </li>
+            {{#this}}
+            <li>
+                <a href="#" onclick="LoadRecipe('.wrapper', '{{Id}}')">{{Name}}</a>
+            </li>
+            {{/this}}
+        </ul>
+    </script>
+
+    <script id="recipeEditTemplate" type="text/html">
+        <form id="NewRecipeForm">
+            <input type="hidden" name="Id" value="{{Id}}" />
+            <div class="editor-label">
+                <label>Name</label>
+            </div>
+            <div class="editor-field">
+                <input type="text" name="Name" value="{{Name}}" />
+            </div>
+            <h3>Directions</h3>
+            {{#each Directions}}
+            <input type="hidden" name="Dicrections[{{Step}}].Step" value="{{Step}}" />
+            <div class="editor-label">
+                <label>Step {{Step}}</label>
+            </div>
+            <div class="editor-field">
+                <input type="text" name="Directions[{{Step}}].Description" value="{{Description}}" />
+            </div>
+            {{/each}}
+            <input type="button" id="RecipeAddDirectionButton" value="Add Direction" />
+            <div>
+                <input class="submit" type="button" id="NewRecipeSubmitButton" value="Submit" />
+            </div>
+        </form>
+
+    </script>
+
+    <script id="NewRecipeDirectionTemplate" type="text/html">
+        <input type="hidden" name="Dicrections[{{this}}].Step" value="{{this}}" />
+        <div class="editor-label">
+            <label>Step {{this}}</label>
+        </div>
+        <div class="editor-field">
+            <input type="text" name="Directions[{{this}}].Description" value="" />
+        </div>
+
     </script>
 
 </body>

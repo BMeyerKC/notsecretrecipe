@@ -22,6 +22,6 @@ css/custom.css and it will override the style in this file. You have been warned
 @import url(layout.css);
 @import url(typo.css);
 @import url(custom.css);
-
+@import url(http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco);
 
 

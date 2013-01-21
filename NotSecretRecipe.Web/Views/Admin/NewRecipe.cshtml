@@ -1,0 +1,24 @@
+﻿@model NotSecretRecipe.Models.Recipe
+
+<form id="NewRecipeForm">
+    @Html.HiddenFor(m => m.Id)
+    <div class="editor-label">
+        @Html.LabelFor(m => m.Name)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(m => m.Name)
+    </div>
+    <h3>Directions</h3>
+    @for (int i = 0; i < Model.Directions.Count; i++)
+    {
+        <div class="editor-label">
+            @Html.LabelFor(m => Model.Directions[i].Description)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => Model.Directions[i].Description)
+        </div>
+    }
+    <div>
+        <input class="submit" type="button" id="NewRecipeSubmitButton" value="Submit" />
+    </div>
+</form>

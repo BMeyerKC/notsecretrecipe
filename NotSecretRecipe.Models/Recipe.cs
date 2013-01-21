@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using Microsoft.Build.Framework;
 
 namespace NotSecretRecipe.Models
 {
     public class Recipe
     {
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
         public string ImageURL { get; set; }
         public Category Category { get; set; }
