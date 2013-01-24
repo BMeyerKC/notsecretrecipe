@@ -63,8 +63,20 @@
     @Scripts.Render("~/bundles/jquery")
 
     <script type="text/javascript">
-        var editorDirectionStep = 0;
+        Handlebars.registerHelper('iter', function (context, options) {
+            var fn = options.fn, inverse = options.inverse;
+            var ret = "";
 
+            if (context && context.length > 0) {
+                for (var i = 0, j = context.length; i < j; i++) {
+                    ret = ret + fn($.extend({}, context[i], { i: i, iPlus1: i + 1 }));
+                }
+            } else {
+                ret = inverse(this);
+            }
+            return ret;
+        });
+        
         function LoadRandomRecipes(elementSelector) {
             $.post("/service/recipes", function (data) {
                 var template = $("#randomRecipeTemplate").html();
@@ -80,11 +92,15 @@
             });
         }
 
-        function NewRecipe(elementSelector) {
-            $.post("/service/recipeNew/", function (data) {
+        var editorDirectionStep = 0;
+        var editorIngredientIndex = 0;
+
+        function EditRecipe(elementSelector, id) {
+            $.post("/service/recipe/" + id, function (data) {
                 var template = $("#recipeEditTemplate").html();
                 var html = Handlebars.compile(template)(data);
-                editorDirectionStep = data.Directions.length;
+                editorIngredientIndex = (data.Ingredients == null) ? 0 : data.Ingredients.length;
+                editorDirectionStep = (data.Directions == null) ? 0 : data.Directions.length;
                 $(elementSelector).html(html);
             });
         }
@@ -105,18 +121,27 @@
             });
         }
 
-        $(document).on("click", "#NewRecipeSubmitButton", function () {
-            var postData = $("#NewRecipeForm").serialize();
+        $(document).on("click", "#EditRecipeSubmitButton", function () {
+            var postData = $("#EditRecipeForm").serialize();
             console.log(postData);
-            $.post("Admin/NewRecipe", postData, function (data) {
-                if (data == "1") {
-                    LoadRecipe(".wrapper", "1");
+            $.post("/Admin/NewRecipe", postData, function (data) {
+                if (data != "0") {
+                    LoadRecipe(".wrapper", data);
+                    LoadRandomRecipes("#randomRecipes");
                 }
             });
         });
+        
+        $(document).on("click", "#RecipeAddIngredientButton", RecipeIngredientAdd);
+        function RecipeIngredientAdd() {
+
+            var template = $("#NewRecipeIngredientTemplate").html();
+            var html = Handlebars.compile(template)(editorIngredientIndex);
+            $("#RecipeAddIngredientButton").before(html);
+            editorIngredientIndex++;
+        }
 
         $(document).on("click", "#RecipeAddDirectionButton", RecipeDirectionAdd);
-
         function RecipeDirectionAdd() {
 
             var template = $("#NewRecipeDirectionTemplate").html();
@@ -168,6 +193,7 @@
             <br />
             {{/each}}
             <p>Enjoy!</p>
+
         </div>
         <div class="ingredients">
             <div class="note_top"></div>
@@ -179,6 +205,7 @@
                 </ul>
             </div>
             <div class="note_bottom"></div>
+            <h4 onclick="EditRecipe('.wrapper', '{{Id}}')">Edit</h4>
         </div>
         <div class="clear_container"></div>
     </script>
@@ -197,7 +224,7 @@
     </script>
 
     <script id="recipeEditTemplate" type="text/html">
-        <form id="NewRecipeForm">
+        <form id="EditRecipeForm">
             <input type="hidden" name="Id" value="{{Id}}" />
             <div class="editor-label">
                 <label>Name</label>
@@ -205,9 +232,20 @@
             <div class="editor-field">
                 <input type="text" name="Name" value="{{Name}}" />
             </div>
+            <h3>Ingredients</h3>
+            {{#iter Ingredients}}
+            <div class="editor-label">
+                <label>Ingredient eg. 1 tbsp vanilla</label>
+            </div>
+            <div class="editor-field">
+                <input type="text" name="Ingredients[{{i}}].Name" value="{{Name}}" />
+            </div>
+            {{/iter}}
+            <input type="button" id="RecipeAddIngredientButton" value="Add Ingredient" />
+            <br/>
             <h3>Directions</h3>
             {{#each Directions}}
-            <input type="hidden" name="Dicrections[{{Step}}].Step" value="{{Step}}" />
+            <input type="hidden" name="Directions[{{Step}}].Step" value="{{Step}}" />
             <div class="editor-label">
                 <label>Step {{Step}}</label>
             </div>
@@ -217,7 +255,7 @@
             {{/each}}
             <input type="button" id="RecipeAddDirectionButton" value="Add Direction" />
             <div>
-                <input class="submit" type="button" id="NewRecipeSubmitButton" value="Submit" />
+                <input type="button" class="submit" id="EditRecipeSubmitButton" value="Submit" />
             </div>
         </form>
 
@@ -230,6 +268,15 @@
         </div>
         <div class="editor-field">
             <input type="text" name="Directions[{{this}}].Description" value="" />
+        </div>
+
+    </script>
+    <script id="NewRecipeIngredientTemplate" type="text/html">
+        <div class="editor-label">
+            <label>Ingredient eg. 1 tbsp vanilla</label>
+        </div>
+        <div class="editor-field">
+            <input type="text" name="Ingredients[{{this}}].Name" value="" />
         </div>
 
     </script>

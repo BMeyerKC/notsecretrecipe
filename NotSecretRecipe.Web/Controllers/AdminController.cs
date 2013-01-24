@@ -12,20 +12,27 @@ namespace NotSecretRecipe.Web.Controllers
         //
         // GET: /Admin/
 
-        [HttpGet]
-        public PartialViewResult NewRecipe()
-        {
-            var newRecipe = new Recipe();
-            newRecipe.Directions = new List<Direction>();
-            newRecipe.Directions.Add(new Direction() { Step = 0, Description = "desc1" });
-            newRecipe.Directions.Add(new Direction() { Step = 1, Description = "desc2" });
-            return PartialView(newRecipe);
-        }
-
         [HttpPost]
-        public int NewRecipe(Recipe newRecipe)
+        public int NewRecipe(Recipe newRecipe, FormCollection form)
         {
-            return 1;
+            var returnId = newRecipe.Id;
+
+            using (var raven = MvcApplication.Store.OpenSession())
+            {
+                var oldRecipe = raven.Load<Recipe>(string.Format("recipes/{0}", newRecipe.Id));
+                if (oldRecipe != null && TryUpdateModel(oldRecipe))
+                {
+                    raven.Store(oldRecipe, oldRecipe.Id.ToString());
+                    returnId = oldRecipe.Id;
+                }
+                else
+                {
+                    raven.Store(newRecipe);
+                }
+                raven.SaveChanges();
+            }
+
+            return returnId;
         }
 
 

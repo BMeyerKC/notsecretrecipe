@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using NotSecretRecipe.Models;
-using Raven.Client.Document;
 
 namespace NotSecretRecipe.Web.Controllers
 {
@@ -16,12 +15,22 @@ namespace NotSecretRecipe.Web.Controllers
 
         public JsonResult Categories()
         {
-            List<Category> cats;
+            var cats = new List<Category>();
+            List<Recipe> recipes;
             using (var raven = MvcApplication.Store.OpenSession())
             {
-                cats = raven.Query<Category>().ToList();
+                recipes = raven.Query<Recipe>().ToList();
             }
 
+            recipes.ForEach(r =>
+                {
+                    if (r.Category != null) cats.Add(r.Category);
+                });
+
+            cats.ForEach(c =>
+                {
+                    c.Name = c.Name ?? "";
+                });
             return Json(cats);
         }
 
@@ -48,27 +57,21 @@ namespace NotSecretRecipe.Web.Controllers
 
         public JsonResult Recipe(int id)
         {
-            Recipe recipe;
+            var recipe = new Recipe();
+
+            if (id == 0)
+            {
+                return Json(recipe);
+            }
+
             using (var raven = MvcApplication.Store.OpenSession())
             {
                 recipe = raven.Load<Recipe>(string.Format("recipes/{0}", id));
             }
-            return Json(recipe);
-        }
-
-        public JsonResult RecipeNew()
-        {
-            var recipe = new Recipe
-                {
-                    Directions = new List<Direction>
-                        {
-                            new Direction {Step = 0, Description = "desc1"},
-                            new Direction {Step = 1, Description = "desc2"}
-                        }
-                };
 
             return Json(recipe);
         }
+
     }
 
 }

@@ -263,13 +263,17 @@ textarea, input{
  } 
  
 .submit{
- width: 70px;
+ width: 100px;
  border: none;
  background: none;
  margin: 10px 0 0 0;
  padding: 0;
  position: relative;
  left: -10px;
+ background-color: #d88d08;
+color: white;
+height: 50px;
+    cursor: pointer;
  }
 
 /* Form items: inputs, textarea, etc */
