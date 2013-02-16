@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.Build.Framework;
 
 namespace NotSecretRecipe.Models
@@ -10,6 +11,7 @@ namespace NotSecretRecipe.Models
         public string Name { get; set; }
         public string ImageURL { get; set; }
         public Category Category { get; set; }
+        public DateTime CreateDate { get; set; }
         public List<Ingredient> Ingredients { get; set; }
         public List<Direction> Preparations { get; set; }
         public List<Direction> Directions { get; set; }

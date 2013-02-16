@@ -76,7 +76,7 @@
             }
             return ret;
         });
-        
+
         function LoadRandomRecipes(elementSelector) {
             $.post("/service/recipes", function (data) {
                 var template = $("#randomRecipeTemplate").html();
@@ -103,6 +103,14 @@
                 editorDirectionStep = (data.Directions == null) ? 0 : data.Directions.length;
                 $(elementSelector).html(html);
             });
+        }
+        
+        function DeleteRecipe(id) {
+            if (confirm("Are you sure you want to delete this recipe?")) {
+                $.post("/service/deleterecipe", { recipeId: id }, function(data) {
+                    location.reload();
+                });
+            }
         }
 
         function LoadCategories(elementSelector) {
@@ -131,7 +139,7 @@
                 }
             });
         });
-        
+
         $(document).on("click", "#RecipeAddIngredientButton", RecipeIngredientAdd);
         function RecipeIngredientAdd() {
 
@@ -242,7 +250,7 @@
             </div>
             {{/iter}}
             <input type="button" id="RecipeAddIngredientButton" value="Add Ingredient" />
-            <br/>
+            <br />
             <h3>Directions</h3>
             {{#each Directions}}
             <input type="hidden" name="Directions[{{Step}}].Step" value="{{Step}}" />
@@ -256,6 +264,8 @@
             <input type="button" id="RecipeAddDirectionButton" value="Add Direction" />
             <div>
                 <input type="button" class="submit" id="EditRecipeSubmitButton" value="Submit" />
+                <h4 onclick="DeleteRecipe('{{Id}}')">Delete</h4>
+
             </div>
         </form>
 

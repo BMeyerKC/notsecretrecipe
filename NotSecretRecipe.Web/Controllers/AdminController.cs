@@ -27,6 +27,7 @@ namespace NotSecretRecipe.Web.Controllers
                 }
                 else
                 {
+                    newRecipe.CreateDate = DateTime.Now;
                     raven.Store(newRecipe);
                 }
                 raven.SaveChanges();

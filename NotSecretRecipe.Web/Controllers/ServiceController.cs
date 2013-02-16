@@ -72,6 +72,20 @@ namespace NotSecretRecipe.Web.Controllers
             return Json(recipe);
         }
 
+        public JsonResult DeleteRecipe(int recipeId)
+        {
+            using (var raven = MvcApplication.Store.OpenSession())
+            {
+                var recipe = raven.Load<Recipe>(string.Format("recipes/{0}", recipeId));
+
+                raven.Delete(recipe);
+
+                raven.SaveChanges();
+
+                return Json(new {success = true});
+            }
+        }
+
     }
 
 }
