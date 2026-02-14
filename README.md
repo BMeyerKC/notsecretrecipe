@@ -29,7 +29,7 @@ npm run dev    # starts Vite dev server with HMR
 Environment assumptions:
 
 - Node.js 20+
-- GitHub Pages repository name matches `NotSecretFamilyReceipeBook` (used for the Vite base path)
+- GitHub Pages repository name matches the configured Vite base path (`notsecretrecipe` by default)
 
 ## Available Scripts
 
@@ -91,7 +91,7 @@ Run `npm run recipes:validate` before committing to catch schema drift and dupli
 
 ## Deployment
 
-1. Ensure the repository name matches the Vite base (`NotSecretFamilyReceipeBook`). If not, update `repoBase` in `vite.config.ts`.
+1. Ensure the repository name matches the Vite base (`notsecretrecipe` by default). If not, update `repoBase` in `vite.config.ts`.
 2. Enable GitHub Pages for the repo using the `gh-pages` branch (Settings → Pages → Deploy from branch).
 3. Push to `main`. The GitHub Action builds and publishes `dist/` to the `gh-pages` branch automatically.
 
