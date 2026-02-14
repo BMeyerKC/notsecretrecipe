@@ -1,0 +1,48 @@
+{
+  "slug": "smoky-lentil-tacos",
+  "title": "Smoky Chipotle Lentil Tacos",
+  "description": "Protein-packed vegetarian tacos with quick-pickled onions and lime crema.",
+  "author": "Diego Nguyen",
+  "createdAt": "2026-02-01T00:00:00.000Z",
+  "tags": ["vegetarian", "budget"],
+  "course": "dinner",
+  "cuisine": "Mexican",
+  "dietLabels": ["vegetarian"],
+  "prepMinutes": 25,
+  "cookMinutes": 30,
+  "yield": "10 tacos",
+  "difficulty": "easy",
+  "heroImage": "https://images.unsplash.com/photo-1504544750208-dc0358e63f7f?auto=format&fit=crop&w=900&q=80",
+  "ingredients": [
+    { "quantity": "1 tbsp", "item": "olive oil" },
+    { "quantity": "1", "item": "yellow onion", "notes": "finely chopped" },
+    { "quantity": "3 cloves", "item": "garlic", "notes": "minced" },
+    { "quantity": "1 tbsp", "item": "tomato paste" },
+    { "quantity": "1 cup", "item": "green lentils", "notes": "rinsed" },
+    { "quantity": "2 1/2 cups", "item": "vegetable broth" },
+    { "quantity": "2", "item": "chipotle peppers in adobo", "notes": "minced" },
+    { "quantity": "1 tsp", "item": "ground cumin" },
+    { "quantity": "1 tsp", "item": "smoked paprika" },
+    { "quantity": "1 tsp", "item": "dried oregano" },
+    { "quantity": "1 tsp", "item": "kosher salt" },
+    { "quantity": "10", "item": "warm tortillas" },
+    { "quantity": "1 cup", "item": "shredded cabbage" },
+    { "quantity": "1/2 cup", "item": "quick-pickled onions" },
+    { "quantity": "1/2 cup", "item": "lime crema" }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Sauté onion in oil until translucent. Add garlic and tomato paste; cook 1 minute."
+    },
+    {
+      "order": 2,
+      "text": "Stir in lentils, broth, chipotles, spices, and salt. Simmer 25 minutes until tender and saucy."
+    },
+    {
+      "order": 3,
+      "text": "Spoon lentils into tortillas and top with cabbage, pickled onions, and crema."
+    }
+  ],
+  "tips": ["Leftover filling freezes well up to one month."]
+}

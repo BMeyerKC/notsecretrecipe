@@ -1,0 +1,49 @@
+{
+  "slug": "lemon-garlic-salmon",
+  "title": "Sheet-Pan Lemon Garlic Salmon",
+  "description": "A weeknight-friendly salmon dinner with blistered green beans and a punchy herb oil.",
+  "author": "Morgan Rivera",
+  "createdAt": "2026-01-08T00:00:00.000Z",
+  "tags": ["quick", "omega-3", "sheet-pan"],
+  "course": "dinner",
+  "cuisine": "Mediterranean",
+  "dietLabels": ["gluten-free", "dairy-free"],
+  "prepMinutes": 15,
+  "cookMinutes": 18,
+  "yield": "4 servings",
+  "difficulty": "easy",
+  "heroImage": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80",
+  "ingredients": [
+    { "quantity": "1 1/2 lb", "item": "salmon fillet" },
+    { "quantity": "1 lb", "item": "green beans", "notes": "trimmed" },
+    { "quantity": "3 tbsp", "item": "olive oil" },
+    { "quantity": "3 cloves", "item": "garlic", "notes": "grated" },
+    { "quantity": "1", "item": "lemon", "notes": "zested and juiced" },
+    { "quantity": "1 tsp", "item": "smoked paprika" },
+    { "quantity": "1 tsp", "item": "kosher salt" },
+    { "quantity": "1/2 tsp", "item": "black pepper" },
+    { "quantity": "2 tbsp", "item": "fresh dill", "notes": "finely chopped" }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "text": "Preheat oven to 425°F (220°C) and line a sheet pan with parchment."
+    },
+    {
+      "order": 2,
+      "text": "Toss green beans with 1 tbsp olive oil, half the garlic, and half the lemon zest. Spread on pan."
+    },
+    {
+      "order": 3,
+      "text": "Place salmon over beans. Stir remaining olive oil, garlic, zest, lemon juice, paprika, salt, and pepper. Brush over salmon."
+    },
+    {
+      "order": 4,
+      "text": "Roast 15–18 minutes until salmon flakes. Top with dill and extra lemon."
+    }
+  ],
+  "tips": [
+    "Swap green beans for asparagus when in season.",
+    "Leftovers become excellent cold salad over baby greens."
+  ]
+}
